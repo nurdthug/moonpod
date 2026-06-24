@@ -1,0 +1,21 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "status": "not-deployed",
+  "explorer": "https://sepolia.etherscan.io",
+  "contracts": {
+    "MoonPodToken": null,
+    "MoonPodPresale": null,
+    "MoonPodTeamVesting": null
+  },
+  "verified": {
+    "MoonPodToken": false,
+    "MoonPodPresale": false,
+    "MoonPodTeamVesting": false
+  },
+  "presale": {
+    "enabled": false,
+    "note": "Disabled until a tested testnet deployment exists and addresses are filled in above."
+  },
+  "_comment": "Populated by `hardhat ignition deploy ... --network sepolia`. The website reads this file to know which addresses to use and whether to enable any interactive flow. Never put secrets here."
+}

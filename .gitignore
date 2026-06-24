@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Hardhat / Solidity
+cache/
+artifacts/
+typechain-types/
+coverage/
+coverage.json
+
+# Ignition deployment state (may contain network-specific journals)
+contracts/ignition/deployments/
+
+# OS / editor
+.DS_Store
+*.log
+.idea/
+.vscode/

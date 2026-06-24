@@ -1,0 +1,16 @@
+{
+  "MoonPod": {
+    "admin": "DEPLOYER_ADDRESS",
+    "treasury": "DEPLOYER_ADDRESS",
+    "initialHolder": "DEPLOYER_ADDRESS",
+    "vestingBeneficiary": "DEPLOYER_ADDRESS",
+    "presaleStart": 0,
+    "presaleEnd": 0,
+    "softCapWei": 0,
+    "hardCapWei": 0,
+    "minContributionWei": 0,
+    "maxContributionWei": 0,
+    "weiPerToken": 0,
+    "vestingStart": 0
+  }
+}

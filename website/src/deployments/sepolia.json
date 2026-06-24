@@ -1,0 +1,8 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "status": "not-deployed",
+  "explorer": "https://sepolia.etherscan.io",
+  "contracts": { "MoonPodToken": null, "MoonPodPresale": null, "MoonPodTeamVesting": null },
+  "presale": { "enabled": false }
+}

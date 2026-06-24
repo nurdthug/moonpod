@@ -1,0 +1,21 @@
+{
+  "network": "mainnet",
+  "chainId": 1,
+  "status": "not-deployed",
+  "explorer": "https://etherscan.io",
+  "contracts": {
+    "MoonPodToken": null,
+    "MoonPodPresale": null,
+    "MoonPodTeamVesting": null
+  },
+  "verified": {
+    "MoonPodToken": false,
+    "MoonPodPresale": false,
+    "MoonPodTeamVesting": false
+  },
+  "presale": {
+    "enabled": false,
+    "note": "MUST remain disabled. No mainnet deployment or public purchasing is authorized until docs/launch-checklist.md is complete and Rowland Akinduro gives explicit written approval."
+  },
+  "_comment": "Do not populate without explicit approval. Publishing an address here makes it live on the website."
+}
