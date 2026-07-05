@@ -11,13 +11,14 @@
     "MoonPodTeamVesting": "0xe0122e3db795b47a4126664332266cffbff17bb4"
   },
   "verified": {
-    "MoonPodToken": false,
-    "MoonPodPresale": false,
-    "MoonPodTeamVesting": false
+    "MoonPodToken": true,
+    "MoonPodPresale": true,
+    "MoonPodTeamVesting": true
   },
   "presale": {
     "enabled": false,
     "note": "Testnet rehearsal only. Placeholder pricing (NOT approved): soft cap 0.1 ETH, hard cap 10 ETH, weiPerToken 3 gwei. Purchasing stays disabled on the website."
   },
-  "_comment": "Sepolia rehearsal deployed via Remix + MetaMask on 2026-07-05. Allocation transfers into vesting/presale not yet executed."
+  "_comment": "Sepolia rehearsal deployed via Remix + MetaMask on 2026-07-05. Allocation transfers into vesting/presale not yet executed.",
+  "_verification": "Verified 2026-07-05 on Sourcify, Blockscout, and Routescan via Remix. Etherscan verification pending (needs Etherscan API key)."
 }
