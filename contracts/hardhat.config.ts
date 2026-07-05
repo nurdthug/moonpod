@@ -1,8 +1,30 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig, subtask } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import * as dotenv from "dotenv";
 
 dotenv.config();
+
+// Offline/sandboxed environments cannot reach binaries.soliditylang.org. When
+// SOLC_OFFLINE=1 and the solc npm package (matching the pinned version) is
+// installed, compile with its bundled soljson instead of downloading. CI and
+// normal dev machines are unaffected.
+if (process.env.SOLC_OFFLINE === "1") {
+  const {
+    TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD,
+  } = require("hardhat/builtin-tasks/task-names");
+  subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args: any, _hre: any, runSuper: any) => {
+    if (args.solcVersion === "0.8.24") {
+      const compilerPath = require.resolve("solc/soljson.js");
+      return {
+        compilerPath,
+        isSolcJs: true,
+        version: "0.8.24",
+        longVersion: "0.8.24+commit.e11b9ed9",
+      };
+    }
+    return runSuper(args);
+  });
+}
 
 // Secrets are read from the environment ONLY. Never hard-code keys here.
 // See docs/security-model.md. .env is git-ignored.

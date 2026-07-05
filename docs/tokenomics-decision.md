@@ -4,7 +4,7 @@ Records the token decisions that require **Rowland Akinduro's explicit approval*
 deployment. The contracts in `contracts/` are built against the *leading working specification*
 below, clearly labeled as pending. Nothing here is final until approved.
 
-## Decision 1 — Total supply (UNRESOLVED)
+## Decision 1 — Total supply (RESOLVED: 8,888,888,888 approved by Rowland, 2026-07-05)
 | Source | Value |
 |---|---|
 | Live website | 1,000,000,000 |

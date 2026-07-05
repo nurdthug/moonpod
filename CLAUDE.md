@@ -57,9 +57,10 @@ moonpod/
   data for the Genesis Pod contract and the two wallet addresses, and Rowland's approvals on
   supply / sale-pricing / multisig. See `docs/current-state-audit.md` and `docs/launch-checklist.md`.
 
-## Working specification (PENDING approval — not yet final)
-- Token: name MoonPod, symbol MOONPOD, 18 decimals, fixed supply **8,888,888,888** (conflicts
-  with the website's 1,000,000,000 — unresolved, see `docs/tokenomics-decision.md`).
+## Working specification
+- Token: name MoonPod, symbol MOONPOD, 18 decimals, fixed supply **8,888,888,888**
+  (**APPROVED by Rowland 2026-07-05**, resolving the website's 1,000,000,000 conflict;
+  see `docs/tokenomics-decision.md`). Pricing, multisig, and treasury still pending.
 - Allocations: presale 40%, liquidity 20%, ecosystem 20%, team 10% (2y vest / 6mo cliff),
   treasury 10%. These sum exactly to total supply in base units (asserted by tests).
 - Presale: ETH-denominated (no-oracle) model recommended; final pricing pending approval.

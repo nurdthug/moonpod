@@ -51,7 +51,7 @@ function renderFacts() {
 
   if (isPrelaunch) {
     status.textContent = "Prelaunch — not deployed";
-    supply.textContent = "Pending approval";
+    supply.textContent = "8,888,888,888 (fixed)";
     network.textContent = "Ethereum (TBD)";
     contract.textContent = "Not yet deployed";
     return;
@@ -66,7 +66,7 @@ function renderFacts() {
     supply.textContent = "See verified contract";
   } else {
     contract.textContent = "Not yet deployed";
-    supply.textContent = "Pending approval";
+    supply.textContent = "8,888,888,888 (fixed)";
   }
 }
 

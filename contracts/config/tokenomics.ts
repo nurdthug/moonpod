@@ -1,5 +1,5 @@
 /**
- * MoonPod tokenomics constants — WORKING SPECIFICATION (pending Rowland's approval).
+ * MoonPod tokenomics constants. Total supply APPROVED by Rowland Akinduro on 2026-07-05.
  *
  * Source: handoff Sections 6 / 6.1. The live website's 1,000,000,000 figure is a
  * documented conflict and is intentionally NOT used here. See docs/tokenomics-decision.md.
