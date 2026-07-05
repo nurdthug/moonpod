@@ -53,9 +53,13 @@ moonpod/
 - **EDR fix applied**: upgraded `@nomicfoundation/edr` from `0.12.0-next.23` to `0.12.1`
   which ships a properly signed binary for macOS Tahoe. The `xattr -c` workaround is no
   longer needed. `npx hardhat test` works cleanly on every run.
-- **Blocked on inputs**: the Replit source export (for the forensic source audit), on-chain
-  data for the Genesis Pod contract and the two wallet addresses, and Rowland's approvals on
-  supply / sale-pricing / multisig. See `docs/current-state-audit.md` and `docs/launch-checklist.md`.
+- **2026-07-05 session**: supply approved (8,888,888,888); site migrated to GitHub Pages
+  (repo nurdthug/moonpod, DNS moved off Replit, mail records preserved); Replit source export
+  obtained (in `../replit-export/`, outside the repo); Sepolia rehearsal deployed via
+  Remix + MetaMask: token 0x6fb04b88f19ba273752e6e18733d756b0a11d937, vesting
+  0xe0122e3db795b47a4126664332266cffbff17bb4, presale 0xecd729557b3f792c721f77be5edcaca059882be6
+  (placeholder pricing, sale not funded/enabled). Still pending: allocation transfers on testnet,
+  Etherscan source verification, security review, pricing/multisig approvals, forensic audit.
 
 ## Working specification
 - Token: name MoonPod, symbol MOONPOD, 18 decimals, fixed supply **8,888,888,888**

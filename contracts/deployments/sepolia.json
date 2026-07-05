@@ -1,12 +1,14 @@
 {
   "network": "sepolia",
   "chainId": 11155111,
-  "status": "not-deployed",
+  "status": "deployed-rehearsal",
   "explorer": "https://sepolia.etherscan.io",
+  "deployedAt": "2026-07-05",
+  "deployer": "0x6dE5dBB2381d8739093008C55AC750C4023922Fe",
   "contracts": {
-    "MoonPodToken": null,
-    "MoonPodPresale": null,
-    "MoonPodTeamVesting": null
+    "MoonPodToken": "0x6fb04b88f19ba273752e6e18733d756b0a11d937",
+    "MoonPodPresale": "0xecd729557b3f792c721f77be5edcaca059882be6",
+    "MoonPodTeamVesting": "0xe0122e3db795b47a4126664332266cffbff17bb4"
   },
   "verified": {
     "MoonPodToken": false,
@@ -15,7 +17,7 @@
   },
   "presale": {
     "enabled": false,
-    "note": "Disabled until a tested testnet deployment exists and addresses are filled in above."
+    "note": "Testnet rehearsal only. Placeholder pricing (NOT approved): soft cap 0.1 ETH, hard cap 10 ETH, weiPerToken 3 gwei. Purchasing stays disabled on the website."
   },
-  "_comment": "Populated by `hardhat ignition deploy ... --network sepolia`. The website reads this file to know which addresses to use and whether to enable any interactive flow. Never put secrets here."
+  "_comment": "Sepolia rehearsal deployed via Remix + MetaMask on 2026-07-05. Allocation transfers into vesting/presale not yet executed."
 }
