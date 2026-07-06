@@ -779,34 +779,7 @@
   <script src="price-feed.js"></script>
   <script src="wallet-modern.js"></script>
   <script src="smart-contract.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-      console.log('Loading real contract data...');
-      
-      const counter = document.getElementById('pod-counter');
-      if (counter) {
-        counter.textContent = 'Loading...';
-      }
-      
-      setTimeout(async () => {
-        if (typeof getContractPodCount === 'function') {
-          const realCount = await getContractPodCount();
-          
-          if (counter) {
-            counter.textContent = realCount + '/888';
-            console.log('Counter updated to real contract data:', counter.textContent);
-          }
-          
-          const progressFill = document.getElementById('progress-fill');
-          if (progressFill) {
-            const percentage = (realCount / 888) * 100;
-            progressFill.style.width = percentage + '%';
-            console.log('Progress bar updated to:', percentage + '%');
-          }
-        }
-      }, 1000);
-    });
-  </script>
+  <!-- legacy counter loader removed: no verified Genesis contract; static paused notice stays -->
   <script src="main.js"></script>
 </body>
 </html>
