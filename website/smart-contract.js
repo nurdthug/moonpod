@@ -160,5 +160,15 @@ class MoonPodContract {
   }
 }
 
-// Initialize global contract instance
-window.moonPodContract = new MoonPodContract();
+// Initialize global contract instance once ethers (loaded with defer) is ready.
+function initMoonPodContract() {
+  if (typeof ethers === 'undefined') return false;
+  if (!window.moonPodContract) {
+    window.moonPodContract = new MoonPodContract();
+  }
+  return true;
+}
+if (!initMoonPodContract()) {
+  document.addEventListener('DOMContentLoaded', initMoonPodContract);
+  window.addEventListener('load', initMoonPodContract);
+}
