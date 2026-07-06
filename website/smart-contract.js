@@ -134,11 +134,15 @@ class MoonPodContract {
     }
   }
 
-  // Fallback count using direct RPC call to NEW CONTRACT
+  // Fallback count: no verified contract is published, so report zero rather
+  // than reading from an unaudited address.
   async getFallbackCount() {
+    return 0;
+  }
+
+  async _legacyFallbackCount() {
     try {
-      // Use live mainnet contract address
-      const newContractAddress = "0x82d13340CEaF373884Ed6dc48f0ceD79954BDc76"; // LIVE MAINNET CONTRACT
+      const newContractAddress = null; // removed: unverified address
       
       console.log(`🔄 Using contract address for fallback: ${newContractAddress}`);
 

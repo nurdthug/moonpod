@@ -86,7 +86,7 @@ function initializeApp() {
     
     console.log('🚀 MoonPod Enhanced - Ready for Launch! 🌕');
     console.log('Current pod count from contract:', currentPodCount);
-    console.log('🌍 Mainnet contract deployed:', '0x82d13340CEaF373884Ed6dc48f0ceD79954BDc76');
+    console.log('No verified Genesis Pod contract published; minting paused.');
     
     // Force immediate counter update to show real data
     setTimeout(() => {
@@ -531,7 +531,7 @@ async function claimPodWithContract() {
     setStatus('Preparing transaction...', 'processing');
 
     // Initialize smart contract if not already done
-    if (!moonPodContract.contract && moonPodContract.contractAddress !== "0x82d13340CEaF373884Ed6dc48f0ceD79954BDc76") {
+    if (!moonPodContract.contract) {
       await moonPodContract.initialize(provider, signer);
     }
 
@@ -646,6 +646,7 @@ async function updateGasEstimate() {
 
 // Update pod counter with animation - accepts real contract count
 function updatePodCounter(realCount = null) {
+  return; // honest mode: static notice in the counter, no live numbers
   const displayCount = realCount !== null ? realCount : currentPodCount;
   
   const allCounters = document.querySelectorAll('.pod-counter, .hero .pod-counter');
@@ -671,6 +672,7 @@ function updatePodCounter(realCount = null) {
 
 // Update progress bar - accepts real contract count
 function updateProgressBar(realCount = null) {
+  return; // honest mode
   if (!progressFill) return;
   const displayCount = realCount !== null ? realCount : currentPodCount;
   const percentage = (displayCount / MAX_PODS) * 100;
@@ -679,6 +681,7 @@ function updateProgressBar(realCount = null) {
 
 // Update scarcity warning - accepts real contract count
 function updateScarcityWarning(realCount = null) {
+  return; // honest mode: scarcity element removed from markup
   if (!scarcityWarning) return;
   const displayCount = realCount !== null ? realCount : currentPodCount;
   const remaining = MAX_PODS - displayCount;
@@ -1027,7 +1030,11 @@ function initializeSmartContract() {
 
 // CRITICAL: Always sync display with real contract data - NO LOCAL STORAGE
 async function syncContractData() {
-  console.log('🔄 Starting contract data sync...');
+  // Honest mode: the Genesis Pod contract is pending an on-chain audit and no
+  // verified address is published, so there is nothing trustworthy to sync.
+  // The counter shows a static "minting paused" notice instead.
+  console.log('Contract sync disabled: Genesis Pod contract pending audit.');
+  return;
   
   // Try to connect to Ethereum even without wallet connected
   let provider;
