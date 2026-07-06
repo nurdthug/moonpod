@@ -1050,7 +1050,7 @@ async function syncContractData() {
     console.log('🌐 Connected to network:', network.name, 'Chain ID:', chainId);
     
     // Only mainnet contract - testnet removed
-    const contractAddress = "0x82d13340CEaF373884Ed6dc48f0ceD79954BDc76"; // LIVE MAINNET CONTRACT
+    const contractAddress = null; // removed: unverified address, minting paused pending audit
     
     // Mainnet only - no testnet support
     console.log('🌍 Mainnet contract deployed:', contractAddress);
