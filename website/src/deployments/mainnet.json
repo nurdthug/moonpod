@@ -1,8 +1,0 @@
-{
-  "network": "mainnet",
-  "chainId": 1,
-  "status": "not-deployed",
-  "explorer": "https://etherscan.io",
-  "contracts": { "MoonPodToken": null, "MoonPodPresale": null, "MoonPodTeamVesting": null },
-  "presale": { "enabled": false }
-}

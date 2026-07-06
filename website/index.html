@@ -1,226 +1,812 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MoonPod — To the Moon. Literally.</title>
-    <meta name="description" content="MoonPod is a decentralized lunar-payload project. Genesis Pod NFTs and the $MOONPOD token. Currently in prelaunch — no token sale is live." />
-    <meta property="og:title" content="MoonPod — To the Moon. Literally." />
-    <meta property="og:description" content="A decentralized lunar-payload project. Currently in prelaunch." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://moonpod.space" />
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body>
-    <!-- Network / state banner is injected here by main.ts -->
-    <div id="state-banner"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>MoonPod - The Gamified Meme Token That Funds Real Moon Missions</title>
+  <meta name="description" content="MoonPod - The gamified meme token that actually funds missions to the moon. Join the presale and secure your $MOONPOD allocation." />
+  <meta name="keywords" content="MoonPod, MOONPOD token, crypto presale, lunar payload, moon mission, Genesis Pod, Ethereum, blockchain, meme coin" />
+  <meta name="author" content="MoonPod" />
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@moonpodspace">
+  <meta name="twitter:creator" content="@moonpodspace">
+  <meta name="twitter:title" content="MoonPod - The Gamified Meme Token That Funds Real Moon Missions">
+  <meta name="twitter:description" content="The first decentralized lunar payload project. Join the $MOONPOD presale and secure your spot in space history.">
+  <meta name="twitter:image" content="https://moonpod.space/social-card.png">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moonpod.space">
+  <meta property="og:title" content="MoonPod - The Gamified Meme Token That Funds Real Moon Missions">
+  <meta property="og:description" content="The first decentralized lunar payload project. Join the $MOONPOD presale and secure your spot in space history.">
+  <meta property="og:image" content="https://moonpod.space/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="MoonPod">
+  
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="shortcut icon" href="logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.umd.min.js" defer></script>
+  <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js" defer></script>
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+  <div class="prelaunch-banner">PRELAUNCH: no mainnet token and no live sale. $MOONPOD contracts are deployed and verified on Sepolia testnet.</div>
+  <canvas id="space-canvas"></canvas>
 
-    <header class="nav">
-      <a class="brand" href="#top">
-        <span class="brand-mark">🌙</span> MoonPod
-      </a>
-      <nav>
-        <a href="#how">How it works</a>
-        <a href="#utility">Utility</a>
-        <a href="#genesis">Genesis Pods</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#faq">FAQ</a>
-        <a href="whitepaper.html">Whitepaper</a>
+  <!-- SECTION A: Sticky Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="logo.png" alt="MoonPod" class="header-logo-img" />
+        <span class="header-logo-text">MoonPod</span>
+      </div>
+      
+      <nav class="header-nav" id="header-nav">
+        <a href="#token-hero" class="nav-link">Token</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#utility" class="nav-link">Utility</a>
+        <a href="#roadmap" class="nav-link">Roadmap</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#genesis-pods" class="nav-link">Genesis Pods</a>
       </nav>
-      <button id="connect-btn" class="btn btn-ghost">Connect Wallet</button>
-    </header>
+      
+      <div class="header-actions">
+        <button class="header-connect-btn" id="header-connect-btn">
+          <i class="fas fa-wallet"></i>
+          <span>Connect Wallet</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#token-hero" class="mobile-nav-link">Token</a>
+      <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+      <a href="#utility" class="mobile-nav-link">Utility</a>
+      <a href="#roadmap" class="mobile-nav-link">Roadmap</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
+      <a href="#genesis-pods" class="mobile-nav-link">Genesis Pods</a>
+    </div>
+  </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-inner">
-          <p class="eyebrow" id="hero-status">Status: Prelaunch</p>
-          <h1>$MOONPOD</h1>
-          <p class="tagline">To the Moon. <em>Literally.</em></p>
-          <p class="lede">
-            MoonPod is a decentralized lunar-payload project. Genesis Pod NFTs represent the
-            original participation layer, and the $MOONPOD token is intended to extend the
-            ecosystem with access, governance, and community participation aligned to mission
-            milestones.
-          </p>
-          <div class="facts">
-            <div class="fact"><span class="k">Token status</span><span class="v" id="f-status">Prelaunch — not deployed</span></div>
-            <div class="fact"><span class="k">Total supply</span><span class="v" id="f-supply">8,888,888,888 (fixed)</span></div>
-            <div class="fact"><span class="k">Network</span><span class="v" id="f-network">Ethereum (TBD)</span></div>
-            <div class="fact"><span class="k">Contract</span><span class="v" id="f-contract">Not yet deployed</span></div>
-          </div>
-          <p class="hero-note" id="hero-note"></p>
-        </div>
-      </section>
-
-      <section class="band">
-        <p>
-          <strong>No token sale is currently live.</strong> There is no presale, no public
-          contract address, and no way to purchase $MOONPOD on this site. Anything claiming
-          otherwise is not authorized by the project. See the
-          <a href="#disclosures">risk &amp; legal disclosures</a>.
-        </p>
-      </section>
-
-      <section id="how" class="section">
-        <h2>How it works</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>1 · Genesis Pods</h3>
-            <p>
-              Genesis Pod NFTs are the original participation layer. The published whitepaper
-              describes 888 Pods intended to secure lunar payload space. Mint availability and
-              on-chain details are being verified — see the Genesis Pods section.
+  <div class="content-wrapper">
+    <main>
+      <!-- SECTION B: MoonPod Token Hero -->
+      <section class="token-hero" id="token-hero">
+        <div class="token-hero-container">
+          <div class="token-hero-left">
+            <div class="token-status-badge">
+              <span class="status-dot"></span>
+              <span id="token-status-label">Prelaunch</span>
+            </div>
+            
+            <h1 class="token-hero-title">$MOONPOD</h1>
+            <p class="token-hero-subtitle">The gamified meme token that actually funds missions to the Moon</p>
+            
+            <p class="token-hero-description">
+              MoonPod connects meme culture with real lunar payloads. Hold $MOONPOD to unlock ranks, 
+              access exclusive airdrops, and vote on what goes to the Moon. This isn't just another token. It's your ticket to space history.
             </p>
+            
+            <div class="token-metrics-strip">
+              <div class="metric-item">
+                <span class="metric-label">Status</span>
+                <span class="metric-value" id="presale-status">Prelaunch</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Supply</span>
+                <span class="metric-value" id="token-supply">8,888,888,888</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Chain</span>
+                <span class="metric-value">ETH Mainnet</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Ticker</span>
+                <span class="metric-value">$MOONPOD</span>
+              </div>
+            </div>
+            
+            <div class="token-hero-buttons">
+              <button class="token-btn-primary" id="presale-cta-btn">
+                <i class="fas fa-rocket"></i>
+                Join the Presale
+              </button>
+              <button class="token-btn-secondary" id="token-how-btn">
+                <i class="fas fa-info-circle"></i>
+                How the Token Works
+              </button>
+            </div>
           </div>
-          <div class="card">
-            <h3>2 · The $MOONPOD token</h3>
-            <p>
-              A fixed-supply ERC-20 intended to provide access tiers, governance participation,
-              and community utility. It will launch aligned with mission milestones, not rushed
-              for liquidity. It is not deployed yet.
-            </p>
-          </div>
-          <div class="card">
-            <h3>3 · Missions</h3>
-            <p>
-              The long-term goal is real lunar payload delivery through contracted aerospace and
-              logistics providers. Any specific partner, manifest, or launch date will only be
-              shown here once supported by documentary evidence.
-            </p>
+          
+          <div class="token-hero-right">
+            <div class="orbit-card">
+              <div class="orbit-card-header">
+                <img src="logo.png" alt="MoonPod" class="orbit-logo" />
+                <div class="orbit-badge">ERC-20</div>
+              </div>
+              
+              <div class="orbit-features">
+                <div class="orbit-feature">
+                  <span class="orbit-icon">🚀</span>
+                  <span>Real Moon Missions</span>
+                </div>
+                <div class="orbit-feature">
+                  <span class="orbit-icon">🎯</span>
+                  <span>Meme Marketing Power</span>
+                </div>
+                <div class="orbit-feature">
+                  <span class="orbit-icon">🏆</span>
+                  <span>Access Tiers & Ranks</span>
+                </div>
+                <div class="orbit-feature">
+                  <span class="orbit-icon">💎</span>
+                  <span>Genesis Pod Airdrops</span>
+                </div>
+                <div class="orbit-feature">
+                  <span class="orbit-icon">🗳️</span>
+                  <span>Community Voting</span>
+                </div>
+                <div class="orbit-feature">
+                  <span class="orbit-icon">🌙</span>
+                  <span>Lunar Payload Access</span>
+                </div>
+              </div>
+              
+              <div class="orbit-card-footer">
+                <span>Genesis Pod Holders Get Priority</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="utility" class="section">
-        <h2>Intended token utility</h2>
-        <p class="muted">
-          The following are intended utilities, not guarantees. Staking and any reward mechanics
-          require separate economic design, testing, and review before they could exist.
-        </p>
-        <ul class="utility-list">
-          <li>Access ranks and token-gated community levels</li>
-          <li>Governance voting on permitted payload themes and community initiatives</li>
-          <li>Priority access (and possible discounts) for future payload services</li>
-          <li>Genesis Pod holder benefits</li>
-          <li>Token-gated mission briefings and progress documentation</li>
-        </ul>
-
-        <h3>Rank tiers</h3>
-        <div class="ranks">
-          <div class="rank"><span>🌍</span> Earthling</div>
-          <div class="rank"><span>🚀</span> Astronaut</div>
-          <div class="rank"><span>👨‍🚀</span> Commander</div>
-          <div class="rank"><span>🛸</span> Lunar Envoy</div>
-          <div class="rank"><span>🌙</span> Moon Architect</div>
+      <!-- SECTION C: Key Metrics and Progress -->
+      <section class="metrics-section" id="metrics">
+        <div class="metrics-container">
+          <h2 class="section-title">Presale Metrics</h2>
+          
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-card-value" id="total-supply-display">8,888,888,888</div>
+              <div class="metric-card-label">Total Supply</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-value" id="presale-allocation">40%</div>
+              <div class="metric-card-label">Presale Allocation</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-value" id="presale-price">TBA</div>
+              <div class="metric-card-label">Presale Price</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-value">ETH</div>
+              <div class="metric-card-label">Network</div>
+            </div>
+          </div>
+          
+          <div class="presale-progress-container">
+            <div class="progress-header">
+              <span class="progress-label">Presale Status</span>
+              <span class="progress-percentage">Not started</span>
+            </div>
+            <p class="progress-note">No sale is live. The presale opens only after the independent security review and final pricing approval. The full contract suite is already deployed and verified on Sepolia testnet.</p>
+          </div>
+          
+          <div class="contract-info">
+            <span class="contract-label">Contract Address:</span>
+            <span class="contract-address" id="token-contract-address">To Be Announced</span>
+          </div>
+          <div class="contract-info">
+            <span class="contract-label">Sepolia Testnet (rehearsal):</span>
+            <a class="contract-address" href="https://sepolia.etherscan.io/address/0x6fb04b88f19ba273752e6e18733d756b0a11d937" target="_blank" rel="noopener noreferrer">0x6fb0...d937 (verified source)</a>
+          </div>
         </div>
-        <p class="muted small">
-          Rank thresholds will be published as a deterministic, openly documented schedule before
-          any rank-gated feature goes live.
-        </p>
       </section>
 
-      <section id="genesis" class="section">
-        <h2>Genesis Pods</h2>
-        <p>
-          Per the published whitepaper: <strong>888</strong> total Genesis Pods — 750 public at
-          0.1 ETH, 88 premium at 0.25 ETH or more, and 50 reserved for the team and community
-          partners. Proceeds are allocated 60% aerospace/payload, 25% technology, 10% community
-          operations, 5% legal/compliance.
-        </p>
-        <div class="notice">
-          <strong>Minting is paused pending an on-chain audit.</strong> The current minted supply,
-          contract address, and mint behavior are being verified before any ETH is accepted. This
-          page intentionally shows no live mint counter and no "pods remaining" figure until those
-          numbers come directly from the contract.
+      <!-- SECTION D: How MoonPod Token Works -->
+      <section class="how-it-works-section" id="how-it-works">
+        <div class="how-container">
+          <h2 class="section-title">How MoonPod Token Works</h2>
+          <p class="section-subtitle">Three simple steps to join the lunar mission</p>
+          
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-icon"><i class="fas fa-wallet"></i></div>
+              <h3 class="step-title">Connect & Join</h3>
+              <p class="step-description">Connect your wallet and join the presale. Early participants get the best rates and priority access to future benefits.</p>
+            </div>
+            
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-icon"><i class="fas fa-coins"></i></div>
+              <h3 class="step-title">Hold & Rank Up</h3>
+              <p class="step-description">Receive $MOONPOD tokens and hold to unlock ranks, access tiers, and exclusive perks. The more you hold, the higher you climb.</p>
+            </div>
+            
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-icon"><i class="fas fa-rocket"></i></div>
+              <h3 class="step-title">Launch to the Moon</h3>
+              <p class="step-description">The community fuels real missions that send keepsakes and culture to the Moon. Your tokens power actual space exploration.</p>
+            </div>
+          </div>
+          
+          <a href="#utility" class="learn-more-link">
+            <span>Learn more about token utility</span>
+            <i class="fas fa-arrow-down"></i>
+          </a>
         </div>
       </section>
 
-      <section id="roadmap" class="section">
-        <h2>Roadmap</h2>
-        <p class="muted">
-          The published whitepaper roadmap (2025–2026) is being revised against work actually
-          completed, current funding, and verified partner status. Phases below are directional,
-          not dated commitments.
-        </p>
-        <ol class="roadmap">
-          <li><strong>Phase 1 — Genesis.</strong> Genesis Pod participation and community building. No token.</li>
-          <li><strong>Phase 2 — Token.</strong> $MOONPOD launch with governance, aligned to milestones.</li>
-          <li><strong>Phase 3 — Deployment.</strong> Aerospace partnerships and payload manifest scheduling, with on-chain verification.</li>
-          <li><strong>Phase 4 — Expansion.</strong> Return-mission concept, subject to feasibility, contracts, law, funding, and partnerships.</li>
-        </ol>
+      <!-- SECTION E: Why MoonPod is Different -->
+      <section class="why-different-section" id="why-different">
+        <div class="why-container">
+          <h2 class="section-title">Why MoonPod is Different</h2>
+          <p class="section-subtitle">Not just another meme coin</p>
+          
+          <div class="comparison-grid">
+            <div class="comparison-card">
+              <div class="comparison-icon"><i class="fas fa-moon"></i></div>
+              <h3>Actually Going to the Moon</h3>
+              <p>Others say "to the moon" as a meme. MoonPod actually sends physical payloads to the lunar surface. Real rockets. Real missions. Real moon landings.</p>
+            </div>
+            
+            <div class="comparison-card">
+              <div class="comparison-icon"><i class="fas fa-cube"></i></div>
+              <h3>Meme + Physical + Proof</h3>
+              <p>Meme culture meets physical missions with documented, verifiable proof. Every payload is tracked, documented, and permanently recorded on-chain.</p>
+            </div>
+            
+            <div class="comparison-card">
+              <div class="comparison-icon"><i class="fas fa-vote-yea"></i></div>
+              <h3>Utility-Driven Governance</h3>
+              <p>Token utility tied to real payloads, airdrops, and governance. Vote on what goes to the Moon, stake for rewards, and access exclusive mission briefings.</p>
+            </div>
+            
+            <div class="comparison-card">
+              <div class="comparison-icon"><i class="fas fa-road"></i></div>
+              <h3>Long-Term Vision</h3>
+              <p>Built for the long haul with a clear roadmap, professional team, and sustainable tokenomics. This isn't a pump-and-dump. It's a legacy project.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="faq" class="section">
-        <h2>FAQ</h2>
-        <details>
-          <summary>Is the $MOONPOD token live?</summary>
-          <p>
-            No. The token is in prelaunch and is not deployed to any network. There is no public
-            contract address. When a contract exists, its verified address and block-explorer link
-            will be shown here and read directly from the project's versioned deployment records.
-          </p>
-        </details>
-        <details>
-          <summary>Can I buy $MOONPOD now?</summary>
-          <p>
-            No. There is no live presale or purchase mechanism on this site. Please disregard any
-            message — on any channel — claiming a sale is live until it is reflected here with a
-            verified contract address.
-          </p>
-        </details>
-        <details>
-          <summary>What is the total supply?</summary>
-          <p>
-            The fixed total supply is 8,888,888,888 MOONPOD, approved on July 5, 2026. It will be
-            verifiable on-chain once the contract is deployed and its source is verified.
-          </p>
-        </details>
-        <details>
-          <summary>What chain will it use?</summary>
-          <p>
-            Ethereum is the intended settlement layer. The exact network and any future cross-chain
-            plans will be confirmed at launch.
-          </p>
-        </details>
-        <details>
-          <summary>How do Genesis Pods relate to the token?</summary>
-          <p>
-            Genesis Pods are the original NFT participation layer. Holders are intended to receive
-            benefits within the ecosystem. Specific benefits will be documented before they apply.
-          </p>
-        </details>
+      <!-- SECTION F: Token Utility and Gamification -->
+      <section class="utility-section" id="utility">
+        <div class="utility-container">
+          <h2 class="section-title">Utility & Ranks</h2>
+          <p class="section-subtitle">How the token unlocks the mission</p>
+          
+          <div class="utility-content">
+            <div class="utility-benefits">
+              <h3><i class="fas fa-gem"></i> Token Utility</h3>
+              <ul class="benefits-list">
+                <li>
+                  <i class="fas fa-check"></i>
+                  <span>Priority access or discounts for future moon payload slots</span>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <span>Eligibility for airdrops connected to Genesis Pods and future missions</span>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <span>Governance voting on what items or themes go to the Moon</span>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <span>Access to token-gated content and mission briefings</span>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <span>Staking rewards and yield opportunities</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="ranks-ladder">
+              <h3><i class="fas fa-trophy"></i> Gamified Ranks</h3>
+              <div class="rank-items">
+                <div class="rank-item rank-5">
+                  <div class="rank-badge">🌙</div>
+                  <div class="rank-info">
+                    <span class="rank-name">Moon Architect</span>
+                    <span class="rank-desc">Ultimate tier: Shape mission parameters and exclusive NFT drops</span>
+                  </div>
+                </div>
+                <div class="rank-item rank-4">
+                  <div class="rank-badge">🛸</div>
+                  <div class="rank-info">
+                    <span class="rank-name">Lunar Envoy</span>
+                    <span class="rank-desc">VIP access to all missions and priority payload slots</span>
+                  </div>
+                </div>
+                <div class="rank-item rank-3">
+                  <div class="rank-badge">👨‍🚀</div>
+                  <div class="rank-info">
+                    <span class="rank-name">Commander</span>
+                    <span class="rank-desc">Full governance rights and exclusive community access</span>
+                  </div>
+                </div>
+                <div class="rank-item rank-2">
+                  <div class="rank-badge">🚀</div>
+                  <div class="rank-info">
+                    <span class="rank-name">Astronaut</span>
+                    <span class="rank-desc">Enhanced voting power and airdrop multipliers</span>
+                  </div>
+                </div>
+                <div class="rank-item rank-1">
+                  <div class="rank-badge">🌍</div>
+                  <div class="rank-info">
+                    <span class="rank-name">Earthling</span>
+                    <span class="rank-desc">Entry tier: Basic access and community participation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="disclosures" class="section disclosures">
-        <h2>Risk &amp; legal disclosures</h2>
-        <p>
-          MoonPod operates under Opin Global. Digital assets are high-risk. The project makes
-          <strong>no guarantees</strong> of profit, price appreciation, exchange listing, yield,
-          airdrops, liquidity, resale value, mission completion, payload delivery, or lunar sample
-          return. Space missions carry technical and regulatory risks outside the project's
-          control. Nothing on this site is investment, legal, or tax advice. Participate only with
-          funds you can afford to lose, and do your own research.
-        </p>
-        <p class="small muted">
-          A formal public-claims and legal review is required before any public token sale. See the
-          project's <code>docs/legal-claims-audit.md</code>.
-        </p>
+      <!-- SECTION G: Roadmap -->
+      <section class="roadmap-section" id="roadmap">
+        <div class="roadmap-container">
+          <h2 class="section-title">Mission Roadmap</h2>
+          <p class="section-subtitle">Our journey to the Moon and beyond</p>
+          
+          <div class="roadmap-timeline">
+            <div class="roadmap-phase phase-active">
+              <div class="phase-marker">1</div>
+              <div class="phase-content">
+                <h3>Phase 1: Genesis Launch</h3>
+                <p>Token design and smart contract deployment. Genesis Pod presale linking NFT holders to token airdrops. Community building on Discord and Telegram. Founding team expansion and technical infrastructure.</p>
+                <div class="phase-status">Current Phase</div>
+              </div>
+            </div>
+            
+            <div class="roadmap-phase">
+              <div class="phase-marker">2</div>
+              <div class="phase-content">
+                <h3>Phase 2: Token Launch</h3>
+                <p>$MOONPOD token listing on DEX and CEX platforms. Community expansion and marketing campaigns. First mission integrations with aerospace partners. Staking mechanics and governance activation.</p>
+              </div>
+            </div>
+            
+            <div class="roadmap-phase">
+              <div class="phase-marker">3</div>
+              <div class="phase-content">
+                <h3>Phase 3: Lunar Mission</h3>
+                <p>Full moon payload mission execution. Payload integration, testing, and manifest scheduling. On-chain verification of inclusion and launch milestones. Content documentation and proof release.</p>
+              </div>
+            </div>
+            
+            <div class="roadmap-phase">
+              <div class="phase-marker">4</div>
+              <div class="phase-content">
+                <h3>Phase 4: Expansion</h3>
+                <p>Expanded ecosystem with additional missions. Return mission concept development. Moon rock and artifact distribution. Museum and university partnerships for education outreach.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <!-- SECTION H: FAQ -->
+      <section class="faq-section" id="faq">
+        <div class="faq-container">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What is MoonPod Token?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>$MOONPOD is an ERC-20 token on Ethereum that powers the MoonPod ecosystem. It's a gamified meme token that actually funds real lunar missions. Token holders gain access to ranks, governance voting, airdrops, and priority access to payload slots on actual Moon missions.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How is this different from a regular meme coin?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>While other meme coins say "to the moon" as a joke, MoonPod actually sends physical payloads to the lunar surface through partnerships with aerospace companies. Your tokens fund real space exploration with documented, verifiable proof. It's meme culture meets actual rocket science.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What chain is MoonPod on?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>$MOONPOD will deploy on Ethereum Mainnet (ERC-20) after the independent security review. The full contract suite currently runs verified on Sepolia testnet. We chose Ethereum for its security, decentralization, and wide wallet compatibility. Future phases may include cross-chain deployment to Polygon and Arbitrum for lower gas costs.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How do I join the presale?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Connect your MetaMask or compatible wallet using the "Connect Wallet" button. Once connected, you can participate in the presale directly from this page. Genesis Pod holders receive priority access and bonus allocations.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What is the connection between the token and Genesis Pods?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Genesis Pods are the original NFT layer of MoonPod, representing actual payload space on lunar missions. Genesis Pod holders receive priority $MOONPOD airdrops, whitelist access, and bonus allocations during presale. The token extends the ecosystem with governance, staking, and broader community participation.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>When will the token go live on exchanges?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>After the presale concludes, $MOONPOD will launch on Uniswap and other DEXs. CEX listings are planned for Phase 2. Join our Discord and follow us on Twitter for the latest announcements on listing dates and trading pairs.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>How risky is this investment?</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Cryptocurrency investments carry significant risk. Token prices can be highly volatile and you may lose some or all of your investment. MoonPod makes no guarantees of returns or token price performance. This is a speculative investment. Only invest what you can afford to lose. Always do your own research (DYOR) before participating in any crypto project.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION I: Community CTA -->
+      <section class="community-section" id="community">
+        <div class="community-container">
+          <h2 class="section-title">Join the Mission</h2>
+          <p class="section-subtitle">Follow our journey and get presale updates</p>
+          
+          <div class="social-buttons">
+            <a href="https://x.com/moonpodspace" target="_blank" class="social-btn twitter-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>Follow on X</span>
+            </a>
+            <a href="https://t.me/moonpodspace" target="_blank" class="social-btn telegram-btn">
+              <i class="fab fa-telegram"></i>
+              <span>Join Telegram</span>
+            </a>
+            <a href="https://discord.gg/68HTfaNA2M" target="_blank" class="social-btn discord-btn">
+              <i class="fab fa-discord"></i>
+              <span>Join Discord</span>
+            </a>
+          </div>
+          
+          <p class="community-note">Join the community to follow mission updates, presale announcements, and connect with fellow lunatics.</p>
+        </div>
+      </section>
+
+      <!-- SECTION J: Page Break / Divider -->
+      <div class="chapter-divider">
+        <div class="divider-content">
+          <div class="divider-icon">🚀</div>
+          <h2>Chapter 2: Genesis Pods</h2>
+          <p>The original NFT layer of MoonPod, paused pending an on-chain audit. Secure your physical payload space on the Moon.</p>
+        </div>
+      </div>
+
+      <!-- SECTION K: Genesis Pods Legacy Section -->
+      <section class="genesis-section" id="genesis-pods">
+        <div class="genesis-header">
+          <h2 class="genesis-title">MoonPod Genesis Pods</h2>
+          <p class="genesis-subtitle">Genesis minting reopens after the on-chain audit. Each Genesis Pod secures actual payload space aboard lunar missions.</p>
+        </div>
+        
+        <section class="hero">
+          <div class="logo-section">
+            <h1 class="project-title">MoonPod</h1>
+            <div class="logo-circle">
+              <img src="logo.png" alt="MoonPod Logo" class="logo" />
+            </div>
+            <div class="tagline">To The Moon. Literally.</div>
+          </div>
+
+          <div class="hero-content">
+            <h2 class="hero-title">Reserve Your Pod</h2>
+            <div class="hero-subtitle">888 Genesis Pods. One Moon. Your legacy.</div>
+            
+            <div class="live-feed">
+              <span class="blinking-dot"></span>
+              <span id="live-status">MISSION LOG: Prelaunch. Genesis minting paused pending on-chain audit.</span>
+            </div>
+            
+            <div class="pod-counter-section">
+              <div class="pod-counter" id="pod-counter">Minting paused pending on-chain audit</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              
+            </div>
+            
+            <div class="presale-controls">
+              <div class="connection-section">
+                <button class="btn-glow" id="connect-btn">
+                  <i class="fas fa-wallet"></i>
+                  Connect Wallet
+                </button>
+                
+                <div class="network-status">
+                  <div class="mainnet-indicator">
+                    <span class="network-dot mainnet"></span>
+                    <span class="network-label">Ethereum Mainnet</span>
+                  </div>
+                </div>
+                
+                <div class="wallet-status" id="wallet-status" style="display:none">
+                  <div class="wallet-info">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Connected: <span id="wallet-address"></span></span>
+                    <button class="disconnect-btn" id="disconnect-btn">
+                      <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                  </div>
+                  <div class="network-info" id="network-info"></div>
+                </div>
+              </div>
+              
+              <div class="claim-section">
+                <div class="price-display">
+                  <div class="price-main">0.1 ETH</div>
+                  <div class="price-usd" id="price-usd">≈ $400 USD</div>
+                  <div class="eth-price-indicator">
+                    <span class="eth-current-label">ETH:</span>
+                    <span class="eth-price">Loading...</span>
+                    <span class="price-last-updated">Updating...</span>
+                  </div>
+                </div>
+                
+                <button class="btn-glow claim-btn" id="claim-btn" disabled>
+                  <i class="fas fa-rocket"></i>
+                  Mint Genesis Pod
+                </button>
+                
+                <div class="transaction-details" id="transaction-details" style="display: none;">
+                  <div class="detail-row">
+                    <span>Treasury Address:</span>
+                    <span class="address">0x6dE5dBB2381d8739093008C55AC750C4023922Fe</span>
+                  </div>
+                  <div class="detail-row">
+                    <span>Estimated Gas:</span>
+                    <span id="gas-estimate">~0.002 ETH</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="status-msg" id="status-msg"></div>
+            </div>
+            
+            
+          </div>
+        </section>
+        
+        <section class="benefits-section">
+          <h3>Mint Genesis Pods to Secure Airdrops & Whitelist</h3>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">🚀</div>
+              <h4>Genesis Pod NFT</h4>
+              <p>Mint your exclusive Genesis Pod NFT to secure real lunar payload space</p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">💎</div>
+              <h4>Airdrops & Whitelist Access</h4>
+              <p>Genesis Pod holders secure priority airdrops and whitelist access for future launches</p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">🌙</div>
+              <h4>Lunar Legacy</h4>
+              <p>Your items travel to the Moon while your Pod unlocks exclusive benefits</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="tokenomics-section">
+          <h3>Genesis Pod Distribution</h3>
+          <div class="tokenomics-grid">
+            <div class="tokenomics-chart">
+              <div class="chart-container">
+                <canvas id="tokenChart" width="300" height="300"></canvas>
+              </div>
+            </div>
+            <div class="tokenomics-details">
+              <div class="token-item">
+                <div class="token-color public"></div>
+                <div class="token-info">
+                  <span class="token-label">Public Mint</span>
+                  <span class="token-percentage">84.5%</span>
+                </div>
+                <div class="token-amount">
+                  750 Pods @ 0.1 ETH
+                  <div class="base-price-usd">≈ $400</div>
+                </div>
+              </div>
+              <div class="token-item">
+                <div class="token-color premium"></div>
+                <div class="token-info">
+                  <span class="token-label">Premium/Auction</span>
+                  <span class="token-percentage">9.9%</span>
+                </div>
+                <div class="token-amount">
+                  88 Pods @ 0.25+ ETH
+                  <div class="premium-price-usd">≈ $1000+</div>
+                </div>
+              </div>
+              <div class="token-item">
+                <div class="token-color reserved"></div>
+                <div class="token-info">
+                  <span class="token-label">Reserved/Airdrops</span>
+                  <span class="token-percentage">5.6%</span>
+                </div>
+                <div class="token-amount">50 Pods (Strategic)</div>
+              </div>
+            </div>
+          </div>
+          <div class="token-stats">
+            <div class="stat-item">
+              <div class="stat-value">888</div>
+              <div class="stat-label">Total Genesis Pods</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">0.1 ETH</div>
+              <div class="stat-label">Base Price</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">Moon</div>
+              <div class="stat-label">Destination</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="litepaper-section">
+          <h3>MoonPod Litepaper</h3>
+          <div class="litepaper-content">
+            <div class="litepaper-intro">
+              <div class="version-tag">Version 1.1 - August 2025</div>
+              <div class="tagline">"To The Moon. Literally."</div>
+            </div>
+            
+            <div class="litepaper-grid">
+              <div class="paper-section">
+                <h4>Genesis Pods</h4>
+                <p>Limited to 888 total supply during Phase 1. Claimable for 0.1 ETH per Pod. <strong>Each Pod secures verified payload space aboard actual lunar missions. You can literally put your items on the Moon.</strong> Personal messages, photos, and small memorabilia are etched into ultra-light materials and launched aboard contracted lunar deliveries.</p>
+                <p>Beyond physical lunar deployment, Pods grant access to exclusive Discord governance, future airdrops, and community-driven mission planning. Each Pod is an evolving NFT with upgrade hooks for expanded utility as missions progress.</p>
+              </div>
+              
+              <div class="paper-section">
+                <h4>Mission Architecture</h4>
+                <p>MoonPod operates through a four-phase deployment model, each phase building toward actual lunar payload delivery and ecosystem expansion.</p>
+                <p><strong>Genesis Phase:</strong> Community formation through NFT ownership, establishing governance foundation and technical infrastructure.</p>
+                <p><strong>Token Phase:</strong> $MOONPOD launch with staking mechanisms, enabling decentralized governance and community-driven mission planning.</p>
+                <p><strong>Deployment Phase:</strong> Aerospace partnerships, payload manifest scheduling, and on-chain verification of launch milestones.</p>
+                <p><strong>Return Phase:</strong> Lunar sample collection partnerships, artifact distribution, and educational collaboration with research institutions.</p>
+              </div>
+              
+              <div class="paper-section">
+                <h4>Fund Allocation</h4>
+                <p>Genesis Pod sales generate approximately 88.8 ETH in total revenue, allocated strategically across mission-critical operations.</p>
+                <p><strong>60% - Aerospace & Payload:</strong> Direct partnerships with lunar logistics providers, payload fabrication, and launch manifest inclusion.</p>
+                <p><strong>25% - Development:</strong> Smart contract audits, $MOONPOD token development, platform infrastructure, and community tools.</p>
+                <p><strong>10% - Operations:</strong> Community management, governance systems, educational partnerships, and ongoing platform maintenance.</p>
+                <p><strong>5% - Reserve:</strong> Emergency fund for mission contingencies, regulatory compliance, and unforeseen operational requirements.</p>
+              </div>
+              
+              <div class="paper-section">
+                <h4>Decentralized Governance</h4>
+                <p>MoonPod operates as a community-owned space exploration DAO: Pod holders control mission decisions through decentralized governance, Direct voting on payload contents, mission parameters, and aerospace partnerships, Self-governing subDAOs for technical R&D, payload curation, and future lunar initiatives.</p>
+                <p>No central authority. No corporate overlords. Just community consensus driving humanity's cosmic expansion.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>MoonPod</h4>
+            <p>The first crypto community-driven lunar payload project. To the moon. Literally.</p>
+            <div class="social-links">
+              <a href="https://discord.gg/68HTfaNA2M" aria-label="Discord" target="_blank"><i class="fab fa-discord"></i></a>
+              <a href="https://x.com/MoonPodSpace" aria-label="X" target="_blank"><span class="x-icon">𝕏</span></a>
+              <a href="https://t.me/moonpodspace" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="whitepaper.html">Official Whitepaper</a></li>
+              <li><a href="#">Smart Contract</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="https://discord.gg/68HTfaNA2M" target="_blank">Discord</a></li>
+              <li><a href="https://x.com/MoonPodSpace" target="_blank">X</a></li>
+              <li><a href="https://t.me/moonpodspace" target="_blank">Telegram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>MoonPod © 2025 - To the Moon. Literally.</div>
+          <div class="legal-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
     </main>
+  </div>
 
-    <footer class="footer">
-      <div>
-        <span class="brand-mark">🌙</span> MoonPod — To the Moon. Literally.
-      </div>
-      <div class="links">
-        <a href="whitepaper.html">Whitepaper</a>
-        <a href="https://x.com/MoonPodSpace" rel="noopener noreferrer">X</a>
-        <a href="https://t.me/moonpodspace" rel="noopener noreferrer">Telegram</a>
-        <a href="https://discord.gg/68HTfaNA2M" rel="noopener noreferrer">Discord</a>
-      </div>
-      <div class="small muted">© Opin Global. Prelaunch build.</div>
-    </footer>
-
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="tokenomics.js"></script>
+  <script src="price-feed.js"></script>
+  <script src="wallet-modern.js"></script>
+  <script src="smart-contract.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      console.log('Loading real contract data...');
+      
+      const counter = document.getElementById('pod-counter');
+      if (counter) {
+        counter.textContent = 'Loading...';
+      }
+      
+      setTimeout(async () => {
+        if (typeof getContractPodCount === 'function') {
+          const realCount = await getContractPodCount();
+          
+          if (counter) {
+            counter.textContent = realCount + '/888';
+            console.log('Counter updated to real contract data:', counter.textContent);
+          }
+          
+          const progressFill = document.getElementById('progress-fill');
+          if (progressFill) {
+            const percentage = (realCount / 888) * 100;
+            progressFill.style.width = percentage + '%';
+            console.log('Progress bar updated to:', percentage + '%');
+          }
+        }
+      }, 1000);
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
 </html>

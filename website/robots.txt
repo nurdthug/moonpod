@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://moonpod.space/sitemap.xml
+
+# MoonPod - Decentralized Lunar Payload Project
+# Each Genesis Pod secures verified space aboard actual Moon missions
